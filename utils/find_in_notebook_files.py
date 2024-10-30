@@ -101,6 +101,23 @@ class NotebookFile(object):
 
         return b_write
 
+    def remove_exe_info_from_nodes(self,) -> bool:
+        """
+        Remove all cell["metadata"]["executionInfo"]
+        """
+        b_write = False
+
+        for c in self.nb_node["cells"]:
+            if "metadata" in c:
+                if "executionInfo" in c["metadata"]:
+                    del c["metadata"]["executionInfo"]
+                    b_write = True
+            if "executionInfo" in c:
+                del c["executionInfo"]
+                b_write = True
+
+        return b_write
+
     def assert_has_not_id(self, allowed_id:Tuple[str]=("view-in-github",)):
         for c in self.nb_node["cells"]:
             assert "id" not in c, c

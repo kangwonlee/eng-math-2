@@ -44,6 +44,7 @@ def proc_file(full_path:str):
     notebook.validate()
 
     b_write |= notebook.remove_cell_id_from_nodes()
+    b_write |= notebook.remove_exe_info_from_nodes()
 
     notebook.assert_has_not_id()
 
