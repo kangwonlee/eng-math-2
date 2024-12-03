@@ -1,17 +1,54 @@
-| wk | ch | topic | description |
-|:-----:|:-----:|:-----:|:-----:|
-| 1  | 7  | 선형대수  | 행렬, 벡터, 행렬식, 선형 연립방정식<br>행렬, 2차원, 3차원 공간에서의 벡터, 내적과 외적 |
-| 2  | 7  | 선형대수  | 행렬, 벡터, 행렬식, 선형 연립방정식<br>행렬, 벡터, 선형 연립방정식 |
-| 3  | 7  | 선형대수  | 행렬, 벡터, 행렬식, 선형 연립방정식<br>행렬, 벡터행렬식, 역행렬, 벡터공간, 내적공간 |
-| 4  | 8  | 선형대수  | 행렬의 고유값 문제<br>행렬의 고유값 문제, 고유값과 벡터 구하기 |
-| 5  | 8  | 선형대수  | 행렬의 고유값 문제<br>고유값 문제의 응용 |
-| 6  | 8  | 선형대수  | 행렬의 고유값 문제<br>대칭, 반대칭, 직교행렬 |
-| 7  | 8  | 선형대수  | 행렬의 고유값 문제<br>고유벡터의 기저, 대각화 |
-| 8  |    | 중간시험 |  |
-| 9  | 9  | 벡터 미분 | 기울기, 발산, 회전<br>9.1 벡터함수, 장(Field), 도함수, 곡선과 호의 길이 |
-| 10 | 9  | 벡터 미분 | 기울기, 발산, 회전<br>9.5 방향 도함수, 9.7 발산과 회전 |
-| 11 | 9  | 벡터 적분 | 적분 정리, 9.8 선적분, 9.9 경로 독립성 |
-| 12 | 9  | 벡터 적분 | 9.13 면적분, 9.16 발산정리, 9.14 Stokes의 정리 |
-| 13 | 11 | Fourier 해석 | Fourier 급수와 응용 |
-| 14 | 11 | Fourier 해석 | 편미분 방정식<br>Fourier 급수와 응용 |
-| 15 |    | 기말시험  |   |
+# Engineering Math II: Visualized Examples
+
+This repository contains Jupyter Notebooks with Python code for visualizing examples from the "Advanced Engineering Mathematics" textbook by Dennis G. Zill (Jones & Bartlett Learning). These visualizations are intended to supplement the textbook and help students gain a deeper understanding of key concepts through interactive examples.
+
+**Textbook:**
+
+* **Title:** Advanced Engineering Mathematics
+* **Author:** Dennis G. Zill
+* **Publisher:** Jones & Bartlett Learning
+
+**Disclaimer:**
+
+This repository is purely for educational purposes and is not intended to replace the textbook. The visualizations are based on examples from the textbook, and it is highly recommended that students purchase the textbook for comprehensive explanations, practice problems, and a complete learning experience.
+
+**Contents:**
+
+This repository currently includes visualizations for the following chapters:
+
+* **Chapter 9: Vector Calculus**
+    * 9.1: Vector Functions
+    * 9.2: Motion on a Curve
+    * 9.3: Curvature and Components of Acceleration
+    * 9.4: Partial Derivative
+    * 9.5: Directional Derivative
+    * 9.6: Tangent Planes and Normal Lines
+    * 9.7: Curl and Divergence
+    * 9.8: Line Integrals
+    * 9.9: Independence of the Path
+    * 9.12: Green's Theorem
+
+* **Chapter 12: Orthogonal Functions and Fourier Series**
+    * 12.1: Orthogonal Functions
+    * 12.2: Fourier Series
+    * 12.3: Fourier Cosine and Sine Series   
+
+
+**Usage:**
+
+1.  **Access:** You can access the notebooks directly on GitHub or open them in Google Colab for interactive use.
+2.  **Google Colab:** Click on the "Open in Colab" badge at the top of each notebook to open it in Google Colab.
+3.  **Interact:** Run the code cells in the notebooks to generate the visualizations and experiment with different parameters.
+
+**Contributing:**
+
+If you find any errors, have suggestions for improvements, or would like to contribute additional visualizations, please feel free to submit an issue or a pull request.
+
+**License:**
+
+This repository is licensed under the [BSD 3-Clause License + Do Not Harm](LICENSE).
+
+**Acknowledgments:**
+
+* Dennis G. Zill for his excellent textbook, "Advanced Engineering Mathematics."
+* The developers of Jupyter Notebook and Google Colab for providing these valuable tools.
