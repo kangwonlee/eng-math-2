@@ -4,7 +4,7 @@ This repository contains Jupyter Notebooks with Python code for visualizing exam
 
 **Textbook:**
 
-* **Title:** Advanced Engineering Mathematics
+* **Title:** Advanced Engineering Mathematics [link](https://www.jblearning.com/catalog/productdetails/9781284206241)
 * **Author:** Dennis G. Zill
 * **Publisher:** Jones & Bartlett Learning
 
