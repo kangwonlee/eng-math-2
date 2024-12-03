@@ -51,4 +51,4 @@ This repository is licensed under the [BSD 3-Clause License + Do Not Harm](LICEN
 **Acknowledgments:**
 
 * Dennis G. Zill for his excellent textbook, "Advanced Engineering Mathematics."
-* The developers of Jupyter Notebook and Google Colab for providing these valuable tools.
+* The developers of Jupyter Notebook, Google Colab and scientific python for providing these valuable tools.
