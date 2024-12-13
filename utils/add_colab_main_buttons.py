@@ -1,12 +1,15 @@
+import argparse
 import copy
 import functools
 import json
 import os
 import pathlib
 import subprocess
+import sys
 import urllib.parse as up
 
-from typing import Dict, Tuple
+
+from typing import Dict, List, Tuple
 
 
 import bs4
@@ -16,8 +19,28 @@ import recursively_convert_units as rsc
 import find_in_notebook_files as nbf
 
 
-def main():
-    for full_path in rsc.iter_ipynb():
+def main(argv):
+    parsed = parse_argv(argv)
+
+    if parsed.file != pathlib.Path('None') and parsed.file.is_file():
+        proc_file(parsed.file)
+    else:
+        proc_dir(parsed.directory)
+
+
+def parse_argv(argv:List[str]) -> argparse.Namespace:
+    parser = argparse.ArgumentParser()
+
+    # Just in case to process only one file
+    parser.add_argument('-f', "--file", required=False, type=pathlib.Path, default='None')
+    # Just in case to process only one folder
+    parser.add_argument('-d', "--directory", required=False, type=pathlib.Path, default=get_proj_root())
+
+    return parser.parse_args(argv[1:])
+
+
+def proc_dir(root:str=None):
+    for full_path in rsc.iter_ipynb(root):
         proc_file(full_path)
 
 
@@ -43,10 +66,13 @@ def proc_file(full_path:str):
 
     notebook.validate()
 
+    # remove all ids
     b_write |= notebook.remove_cell_id_from_nodes()
-    b_write |= notebook.remove_exe_info_from_nodes()
 
-    notebook.assert_has_not_id()
+    notebook.assert_no_ids()
+
+    # remove all trailing whitespaces
+    b_write |= notebook.remove_blank_spaces_from_nodes()
 
     ipynb_path = pathlib.Path(full_path)
 
@@ -117,11 +143,10 @@ def has_button_img(cell:Dict) -> bool:
 
 @functools.lru_cache()
 def get_proj_root() -> pathlib.Path:
-    result = pathlib.Path(__file__).parent.parent.absolute()
-    assert result.exists(), result
-    assert result.is_dir()
-    assert (result / ".gitignore").exists(), (result, result.glob("*"))
-    return result
+    '''
+    Cache version of rsc.get_proj_root()
+    '''
+    return rsc.get_proj_root()
 
 
 def get_rel_path(full_path:str) -> str:
@@ -185,4 +210,4 @@ def get_colab_button_cell(full_path:str,) -> Dict:
 
 
 if "__main__" == __name__:
-    main()
+    main(sys.argv)
