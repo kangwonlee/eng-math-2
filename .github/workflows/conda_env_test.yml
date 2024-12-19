@@ -12,23 +12,35 @@ jobs:
     steps:
     - name: checkout
       id: checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
+
+    - name: Install uv
+      uses: astral-sh/setup-uv@v3
+      with:
+        version: "latest"
+        enable-cache: true
+        cache-suffix: "uv"
+        cache-dependency-glob: "requirements.txt"
 
     - name: setup python
       id: setup_python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.9.16'
-
-    - name: setup environment
-      id: setup_env
       run: |
-        python -m pip install --upgrade pip
-        python -m pip install pytest pytest-xdist requests jupyter lxml numpy matplotlib scipy sympy
+        uv python install 3.10.12
+        uv venv my_env
+        source my_env/bin/activate
+        uv pip install -r requirements.txt
 
+    - name: list packages
+      id: list_pakcages
+      run: |
+        source my_env/bin/activate
+        uv pip list
+  
     - name: check links
       id: links
-      run: python -m pytest -n auto ./tests/test_check_links_in_ipynb.py ./utils/tests/
+      run: |
+        source my_env/bin/activate
+        python -m pytest ./tests/test_check_links_in_ipynb.py ./utils/tests/
 
   badges:
     name: Add Google Colab Badges
@@ -40,7 +52,7 @@ jobs:
     steps:
     - name: checkout
       id: checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: setup environment
       id: setup
@@ -62,15 +74,36 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
-    - uses: actions/checkout@v3
+    - name: checkout
+      id: checkout
+      uses: actions/checkout@v4
 
-    - name: install dependencies
-      id: setup_env
-      run: python -m pip install -r ./requirements.txt
+    - name: Install uv
+      uses: astral-sh/setup-uv@v3
+      with:
+        version: "latest"
+        enable-cache: true
+        cache-suffix: "uv"
+        cache-dependency-glob: "requirements.txt"
+
+    - name: setup python
+      id: setup_python
+      run: |
+        uv python install 3.10.12
+        uv venv my_env
+        source my_env/bin/activate
+        uv pip install -r requirements.txt
+
+    - name: list packages
+      id: list_pakcages
+      run: |
+        source my_env/bin/activate
+        uv pip list
 
     - name: pytest
       id: pytest
       env:
         TEST_IPYNB_IGNORE_FOLDER: tutorial
-      # run: python -m pytest -n auto -k 'not (links or update_nmisp_py)' ./tests
-      run: python -m pytest -k 'not (links or update_nmisp_py)' ./tests
+      run:  |
+        source my_env/bin/activate
+        python -m pytest -n auto -k 'not (links or update_nmisp_py)' ./tests
