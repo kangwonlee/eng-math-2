@@ -13,7 +13,7 @@ matplotlib == 3.8.0
 notebook == 6.5.5
 numpy == 1.26.4
 pytest == 8.3.4
-# pytest-xdist
+pytest-xdist
 requests == 2.32.3
 scipy == 1.13.1
 sympy == 1.13.1
