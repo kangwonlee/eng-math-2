@@ -7,7 +7,6 @@
 #     if pkg in dep:
 #         print(f"- {pkg} = {ver}")
 
-cython
 jupyter
 lxml == 5.3.0
 matplotlib == 3.8.0
