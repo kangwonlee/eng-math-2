@@ -20,7 +20,7 @@ jobs:
         version: "latest"
         enable-cache: true
         cache-suffix: "uv"
-        cache-dependency-glob: "requirements.txt"
+        cache-dependency-glob: "pyproject.toml"
 
     - name: setup python
       id: setup_python
@@ -28,7 +28,7 @@ jobs:
         uv python install 3.10.12
         uv venv my_env
         source my_env/bin/activate
-        uv pip install -r requirements.txt
+        uv pip install -r pyproject.toml
 
     - name: list packages
       id: list_pakcages
@@ -60,7 +60,7 @@ jobs:
         version: "latest"
         enable-cache: true
         cache-suffix: "uv"
-        cache-dependency-glob: "requirements.txt"
+        cache-dependency-glob: "pyproject.toml"
 
     - name: setup python
       id: setup_python
@@ -68,7 +68,7 @@ jobs:
         uv python install 3.10.12
         uv venv my_env
         source my_env/bin/activate
-        uv pip install -r requirements.txt
+        uv pip install -r pyproject.toml
 
     - name: list packages
       id: list_pakcages
@@ -104,7 +104,7 @@ jobs:
         version: "latest"
         enable-cache: true
         cache-suffix: "uv"
-        cache-dependency-glob: "requirements.txt"
+        cache-dependency-glob: "pyproject.toml"
 
     - name: setup python
       id: setup_python
@@ -112,7 +112,7 @@ jobs:
         uv python install 3.10.12
         uv venv my_env
         source my_env/bin/activate
-        uv pip install -r requirements.txt
+        uv pip install -r pyproject.toml
 
     - name: list packages
       id: list_pakcages
